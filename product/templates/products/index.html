@@ -1,0 +1,41 @@
+{% include 'layout/base.html' %}
+
+{% block 'title' %}
+    <title>All Products</title>
+{% endblock %}
+
+{% block 'content' %}
+<main class="main-products">
+{% include 'layout/aside.html' %}
+
+<div class="item-general_container">
+{% if not products %}
+    <p>{{ message }}</p>
+{% else %}
+    {% for product in products %}
+            <div class="item__div">
+                <a class="item__link-container" href="{% url 'products_detail' product.id %}">
+                    <div class="item_container">
+                        <div class="item__img-container">
+                            <img src="{{ product.image.url }}">
+                        </div>
+                        <div class="item__description">
+                            <div class="item__descrption-container">
+                                <span class="item__descrption-item title"><b>{{ product.title }}</b></span>
+                                {% if product.category is not None %}
+                                    <span class="item__descrption-item category"><b>Categoria:</b> {{ product.category }}</span>
+                                {% endif %}
+                                {% if product.main_material is not None %}
+                                    <span class="item__descrption-item material"><b>Material:</b> {{ product.main_material }}</span>
+                                {% endif %}
+                                <span class="item__descrption-price sign"><b>${{ product.price }}</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    {% endfor %}
+{% endif %}
+</div>
+</main>
+{% endblock %}

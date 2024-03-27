@@ -1,0 +1,36 @@
+{% include 'layout/base.html' %}
+
+{% block 'title' %}
+    <title>Resultados</title>
+{% endblock %}
+
+{% block 'content' %}
+
+{% if data.results %}
+    {% for r in data.results %}
+        <div class="item__div">
+            <a class="item__link-container" href="#">
+                <div class="item_container">
+                    <div class="item__description">
+                        <div class="item__descrption-container">
+                            <span class="item__descrption-item title"><b>{{ r.title }}</b></span>
+                            <span class="item__descrption-item category">{{ r.id }}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+
+    {% if data.page > 1 %}
+        <a href="{% url 'search_movies' %}?query={{ query }}&page={{ data.page|add:"-1" }}">Página anterior</a>
+    {% endif %}
+    
+    {% if data.page < data.total_pages %}
+        <a href="{% url 'search_movies' %}?query={{ query }}&page={{ data.page|add:"1" }}">Página siguiente</a>
+    {% endif %}
+{% else %}
+    <p>No se encontraron resultados</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% include 'layout/base.html' %}
+
+{% block 'title' %}
+    <title>{{ item.title }}</title>
+{% endblock %}
+
+{% block 'content' %}
+<main class="main-detail">
+<div class="list-container">
+    <span class="aux-btns"><a href="{% url 'products_index' %}">Ver todos</a></span>
+    <div class="list-div_container">
+        <div class="list-div-image-container">
+            <li class="list-image_item"><img src="{{ item.image.url }}" height="250px"></li>
+        </div>
+        <div class="list-div-item_container">
+            <li class="list-item"><b>{{ item.title }}</b></li>
+            <li class="list-item"><b>${{ item.price }}</b></li>
+            {% if item.description != None %}
+                <li class="list-item">{{ item.description }}</li>
+            {% endif %}
+            {% if item.category != None %}
+                <li class="list-item"><b>Categoria: </b>{{ item.category }}</li>
+            {% endif %}
+            {% if item.main_material != None %}
+                <li class="list-item"><b>Material Principal: </b>{{ item.main_material }}</li>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</main>
+{% endblock %}

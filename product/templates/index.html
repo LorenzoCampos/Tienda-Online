@@ -1,0 +1,30 @@
+{% include 'layout/base.html' %}
+
+{% block 'title' %}
+    <title>Home</title>
+{% endblock %}
+
+{% block 'content' %}
+
+{% comment %} {{ movies }} {% endcomment %}
+
+{% for m in movies %}
+    <div class="item__div">
+    {% for r in m %}
+        <a class="item__link-container" href="#">
+            <div class="item_container">
+                <div class="item__description">
+                    <div class="item__descrption-container">
+                        <span class="item__descrption-item title"><b>{{ r.title }}</b></span>
+                        <span class="item__descrption-item category">{{ r.id }}</span>
+                        {% comment %} <span class="item__descrption-item material">{{ m. }}</span>
+                        <span class="item__descrption-price sign">{{ m. }}</span> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+{% endfor %}
+
+{% endblock %}

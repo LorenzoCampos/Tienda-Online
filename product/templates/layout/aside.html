@@ -1,0 +1,22 @@
+<aside class="aside">
+    <div class="aside-filter-container">
+        <h1>Filtros</h1>
+        <div class="filter-item_container">
+            <span class="aside-filter-item"><a href="{% url 'products_index' %}">Limpiar filtros</a></span>
+            <span class="aside-filter-item"><a href="{% url 'products_orderPriceMinor' minor=1 %}">Precio menor a mayor</a></span>
+            <span class="aside-filter-item"><a href="{% url 'products_orderPriceElderly' elderly=1 %}">Precio mayor a menor</a></span>
+        </div>
+        <h2 class="aside-filter-title">Categoria</h2>
+        <ul>
+            {% for item in categories %}
+            <li class="aside-filter-item"><a href="{% url 'products_filterCategory' item.id %}">{{ item.category_name }}</a></li>
+            {% endfor %}
+        </ul>
+        <h2 class="aside-filter-title">Material</h2>
+        <ul>
+            {% for item in materials %}
+            <li class="aside-filter-item"><a href="{% url 'products_filterMainMaterial' item.id %}">{{ item.material_name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</aside>

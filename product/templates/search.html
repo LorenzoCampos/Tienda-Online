@@ -1,0 +1,14 @@
+{% include 'layout/base.html' %}
+
+{% block 'title' %}
+    <title>Search</title>
+{% endblock %}
+
+{% block 'content' %}
+
+<form method="GET" action="{% url 'search_movies' %}">
+    <input type="text" name="query" placeholder="Buscar películas...">
+    <button type="submit">Buscar</button>
+</form>
+
+{% endblock %}
