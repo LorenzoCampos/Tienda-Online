@@ -60,7 +60,7 @@ import requests
 #     return render(request, 'products/index.html', context)
 
 
-def product_index(request):
+def products_index(request):
     categoria = request.GET.get('categoria')
     material = request.GET.get('material')
     orden = request.GET.get('orden')

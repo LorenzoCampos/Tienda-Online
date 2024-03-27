@@ -26,7 +26,7 @@
     <div class="aside-filter-container">
         <h1>Filtros</h1>
         <span class="aside-filter-item"><a href="{% url 'products_index' %}">Limpiar filtros</a></span>
-        <form action="{% url 'product_index' %}" method="GET">
+        <form action="{% url 'products_index' %}" method="GET">
             <label for="categoria">Categoría:</label>
             <select name="categoria" id="categoria">
                 <option value="">Todas las categorías</option>
