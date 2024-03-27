@@ -2,13 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Category, Material
 import requests
 
-def products_index(request, elderly = None, minor = None):
-    if elderly is not None:
-        products = Product.objects.all().order_by('-price')
-    elif minor is not None:
-        products = Product.objects.all().order_by('price')
-    else:
-        products = Product.objects.all()
+def products_index(request):
+    products = Product.objects.all()
     categories = Category.objects.all()
     materials = Material.objects.all()
     context = {
@@ -41,6 +36,27 @@ def filterProducts(request, main_material_id = None, category_id = None):
         context.update({'message': message})
     else:
         context.update({'products': products})
+    return render(request, 'products/index.html', context)
+
+
+def products_index(request):
+    products = Product.objects.all()
+    if request.GET('category') is not None:
+        products = products.objects.filter(category=request.GET('category'))
+    if request.GET('material') is not None:
+        products = products.objects.filter(main_material=request.GET('material'))
+    if request.GET('price') is not None:
+        if request.GET('price') == '1':
+            products = products.
+        if request.GET('price') == '0':
+            
+    categories = Category.objects.all()
+    materials = Material.objects.all()
+    context = {
+        'products': products,
+        'categories': categories,
+        'materials': materials
+    }
     return render(request, 'products/index.html', context)
 
 
