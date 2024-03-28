@@ -31,23 +31,23 @@
             <select name="categoria" id="categoria">
                 <option value="">Todas las categorías</option>
                 {% for c in categories %}
-                    <option value="{{ c.category_name }}">{{ c.category_name }}</option>
+                    <option value="{{ c.id }}" {% if c.id == selected_categoria %}selected{% endif %}>{{ c.category_name }}</option>
                 {% endfor %}
             </select>
-
+            
             <label for="material">Material:</label>
             <select name="material" id="material">
                 <option value="">Todos los materiales</option>
                 {% for m in materials %}
-                    <option value="{{ m.material_name }}">{{ m.material_name }}</option>
+                    <option value="{{ m.id }}"  {% if m.id == selected_material %}selected{% endif %}>{{ m.material_name }}</option>
                 {% endfor %}
             </select>
 
             <label for="orden">Ordenar por:</label>
             <select name="orden" id="orden">
                 <option value="">Sin orden</option>
-                <option value="precio_descendente">Precio (de Mayor a Menor)</option>
-                <option value="precio_ascendente">Precio (de Menor a Mayor)</option>
+                <option value="precio_desc">Precio (de Mayor a Menor)</option>
+                <option value="precio_asc">Precio (de Menor a Mayor)</option>
             </select>
         
             <button type="submit">Aplicar filtros</button>

@@ -70,20 +70,32 @@ def products_index(request):
     materials = Material.objects.all()
 
     if categoria:
-        products = products.filter(categoria=categoria)
-    
-    if categoria:
-        products = products.filter(material=material)
+        try:
+            categoria = int(categoria)  # Convertir a entero si no está vacío
+            products = products.filter(category=categoria)
+        except ValueError:
+            # Manejar el caso en el que el valor no se puede convertir a entero
+            pass
+        
+    if material:
+        try:
+            material = int(material)
+            products = products.filter(main_material=material)
+        except ValueError:
+            pass
 
-    if orden == 'precio_descendente':
-        products = products.order_by('-precio')
-    elif orden == 'precio_ascendente':
-        products = products.order_by('precio')
+    if orden is not None:
+        if orden == 'precio_descendente':
+            products = products.order_by('-price')
+        elif orden == 'precio_ascendente':
+            products = products.order_by('price')
 
     context = {
         'products': products,
         'categories': categories,
-        'materials': materials
+        'materials': materials,
+        'selected_categoria': categoria,  # Pasar la categoría seleccionada de nuevo al contexto
+        'selected_material': material  # Pasar el material seleccionado de nuevo al contexto
     }
     return render(request, 'products/index.html', context)
 

@@ -26,3 +26,10 @@ class Product(models.Model):
     
     def __str__(self):
         return self.title
+    
+    @property
+    def imageURL(self):
+        if self.image:
+            return self.image.url
+        else:
+            return 'images/placeholder.png'
