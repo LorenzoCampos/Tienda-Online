@@ -95,7 +95,8 @@ def products_index(request):
         'categories': categories,
         'materials': materials,
         'selected_categoria': categoria,  # Pasar la categoría seleccionada de nuevo al contexto
-        'selected_material': material  # Pasar el material seleccionado de nuevo al contexto
+        'selected_material': material,  # Pasar el material seleccionado de nuevo al contexto
+        'selected_orden': orden
     }
     return render(request, 'products/index.html', context)
 

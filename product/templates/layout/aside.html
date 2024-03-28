@@ -46,8 +46,8 @@
             <label for="orden">Ordenar por:</label>
             <select name="orden" id="orden">
                 <option value="">Sin orden</option>
-                <option value="precio_desc" selected>Precio (de Mayor a Menor)</option>
-                <option value="precio_asc" selected>Precio (de Menor a Mayor)</option>
+                <option value="precio_desc" {% if selected_orden == 'precio_desc' %}selected{% endif %}>Precio (de Mayor a Menor)</option>
+                <option value="precio_asc" {% if selected_orden == 'precio_asc' %}selected{% endif %}>Precio (de Menor a Mayor)</option>
             </select>
         
             <button type="submit">Aplicar filtros</button>
