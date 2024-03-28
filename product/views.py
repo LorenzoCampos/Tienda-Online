@@ -85,9 +85,9 @@ def products_index(request):
             pass
 
     if orden is not None:
-        if orden == 'precio_descendente':
+        if orden == 'precio_desc':
             products = products.order_by('-price')
-        elif orden == 'precio_ascendente':
+        elif orden == 'precio_asc':
             products = products.order_by('price')
 
     context = {
