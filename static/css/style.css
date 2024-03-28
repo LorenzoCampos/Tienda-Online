@@ -79,16 +79,15 @@ a:hover {
 
 .main-products {
     display: grid;
-    grid-template-columns: 1fr 12fr;
-    grid-column-gap: 1.4em;
-    padding: 1.4em;
+    grid-template-columns: 1fr 100fr;
+    grid-column-gap: .8em;
+    padding: 1em;
 }
 
 /* Aside settings */
 
 aside {
     width: 100%;
-    margin: .3em;
     padding: .7em;
 }
 
@@ -103,7 +102,6 @@ aside {
 
 .item-general_container {
     width: 100%;
-    margin: .3em;
     padding: .7em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
