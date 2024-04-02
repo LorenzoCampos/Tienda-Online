@@ -1,6 +1,6 @@
 <nav class-"nav">
     <ul class="nav-ul_container">
-        <li class="nav-item"><a href="#">Inicio</a></li>
+        <li class="nav-item"><a href="{% url 'search_movies' %}">Inicio</a></li>
         <li class="nav-item"><a href="{% url 'products_index' %}">Productos</a></li>
         {% if not user.is_authenticated %}
         <li class="nav-item"><a href="{% url 'login' %}">Iniciar sesion</a></li>

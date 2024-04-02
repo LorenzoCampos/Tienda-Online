@@ -3,5 +3,9 @@
 {% block 'content' %}
 
 <h1>Este es el my_account</h1>
-
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button><a href="{% url 'password_change' %}">Cambiar Contraseña</a></button>
+    <input type="submit" value="Guardar Cambios">
 {% endblock %}

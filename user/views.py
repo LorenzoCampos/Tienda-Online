@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .forms import CustomSignUpForm
+from .forms import CustomSignUpForm, EditUser
 
+from .models import CustomUser
 
 def register(request):
     if request.method == 'POST':
@@ -31,4 +32,11 @@ def register(request):
 
 @login_required
 def my_account(request):
-    return render(request, "account/my_account.html")
+    user = request.user
+    if request.method == 'POST':
+        form = EditUser(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+    else:
+        form = EditUser(instance=user)
+    return render(request, "account/my_account.html", {'form': form})

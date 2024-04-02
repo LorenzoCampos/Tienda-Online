@@ -1,5 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.forms import DateInput
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 from .models import CustomUser
 
@@ -16,3 +17,11 @@ class CustomSignUpForm(UserCreationForm):
             if cd['password'] != cd['password2']:
                 return forms.ValidationError('Las contrasenias no coinciden')
             return cd['password2']
+
+class EditUser(UserChangeForm):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'email', 'first_name', 'last_name', 'birthdate']
+        widgets = {
+            'birthdate': DateInput(attrs={'type': 'date'}),
+        }
